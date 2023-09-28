@@ -56,4 +56,14 @@ public class Village {
 		}
 		return chaine.toString();
 	}
+	
+	private static class Marche{
+		private Etal[] etals;
+		private Marche(int nbEtal) {
+			this.etals = new Etal[nbEtal];
+		}
+		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+			
+		}
+	}
 }
