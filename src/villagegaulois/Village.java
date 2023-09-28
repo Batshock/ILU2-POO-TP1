@@ -63,7 +63,7 @@ public class Village {
 			this.etals = new Etal[nbEtal];
 		}
 		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
-			
+			etals[indiceEtal].occuperEtal(vendeur,produit,nbProduit);
 		}
 	}
 }
