@@ -63,6 +63,10 @@ public class Village {
 		private Marche(int nbEtal) {
 			this.etals = new Etal[nbEtal];
 			this.nbEtalMax = nbEtal;
+			int i = 0;
+			while(i<nbEtal) {
+				etals[i] = new Etal;
+			}
 		}
 		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
 			etals[indiceEtal].occuperEtal(vendeur,produit,nbProduit);
@@ -99,6 +103,24 @@ public class Village {
 				return etals[i];
 			}
 			return null
+		}
+		private void afficherMarche() {
+			int i = 0;
+			boolean etalVide = false;
+			int nbEtalVide = 0;
+			while(i<nbEtalMax) {
+				if(etals[i].isEtalOccupee) {
+					etals[i].afficherEtal;
+				}
+				else {
+					etalVide = true;
+					nbEtalVide += 1;
+				}
+				i += 1;
+			}
+			if(etalVide) {
+				System.out.println("Il reste" + nbEtalVide + "étals non utilisés dans le marché. \n");
+			}
 		}
 	}
 }
