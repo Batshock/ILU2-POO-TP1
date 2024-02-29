@@ -59,11 +59,46 @@ public class Village {
 	
 	private static class Marche{
 		private Etal[] etals;
+		private int nbEtalMax;
 		private Marche(int nbEtal) {
 			this.etals = new Etal[nbEtal];
+			this.nbEtalMax = nbEtal;
 		}
 		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
 			etals[indiceEtal].occuperEtal(vendeur,produit,nbProduit);
+		}
+		private int trouverEtalLibre() {
+			int i = 0;
+			while(etals[i].isEtalOccupe() && i<nbEtalMax) {
+				i += 1;
+			}
+			if(i==nbEtalMax) {
+				return -1;
+			}
+			return i;
+		}
+		private Etal[] trouverEtals(String produit) {
+			int i = 0;
+			Etal[] etalsRecherches = new Etal[nbEtalMax];
+			int j = 0;
+			while(i<nbEtalMax) {
+				if (etals[i].isEtalOccupe() && etals[i].contientProduit(produit)) {
+					etalsRecherches[j] = etals[i];
+					j += 1;
+				}
+				i += 1;
+			}
+			return etalsRecherches;
+		}
+		private Etal trouverVendeur(Gaulois gaulois) {
+			int i = 0;
+			while((i<nbEtalMax) && (etals[i].getVendeur()==gaulois)) {
+				i += 1;
+			}
+			if(i<nbEtalMax) {
+				return etals[i];
+			}
+			return null
 		}
 	}
 }
